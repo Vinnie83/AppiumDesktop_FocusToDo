@@ -21,20 +21,17 @@ namespace FocusToDo
             this.options = new AppiumOptions();
             options.AddAdditionalCapability("app", appIdentifier);
             this.driver = new WindowsDriver<WindowsElement>(new Uri(appiumServer), options);
-            System.Threading.Thread.Sleep(5000);
+            
 
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-        }
+      
 
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+            var saveButton = driver.FindElementByName("Add a task to &quot;Tasks&quot;, press ?Enter? to save");
+            saveButton.SendKeys("Pregled Ali");
         }
     }
 }
